@@ -3,7 +3,7 @@
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 [![Data: CC BY 4.0](https://img.shields.io/badge/Data-CC%20BY%204.0-lightgrey.svg)](https://creativecommons.org/licenses/by/4.0/)
 [![Python 3.11+](https://img.shields.io/badge/python-3.11+-blue.svg)](https://www.python.org/downloads/)
-[![DOI](https://zenodo.org/badge/DOI/PENDING.svg)](https://doi.org/PENDING)
+[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.20185969.svg)](https://doi.org/10.5281/zenodo.20185969)
 
 Code, data, and paper for **"Who Turns to AI for Schoolwork? Socioeconomic
 and Educational Predictors of Student Interest in the ChatGPT Era"** by
@@ -42,7 +42,7 @@ software release:
   title     = {Who Turns to {AI} for Schoolwork? Code and data},
   year      = {2026},
   version   = {1.0.0},
-  doi       = {PENDING},
+  doi       = {10.5281/zenodo.20185969},
   url       = {https://github.com/danporder/ai-schoolwork-search-interest}
 }
 ```

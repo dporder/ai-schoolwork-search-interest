@@ -10,6 +10,11 @@ date-released: 2026-05-10
 version: "1.0.0"
 license: MIT
 repository-code: "https://github.com/danporder/ai-schoolwork-search-interest"
+doi: "10.5281/zenodo.20185969"
+identifiers:
+  - type: doi
+    value: "10.5281/zenodo.20185969"
+    description: "Zenodo archive of the v1.0.0 release"
 keywords:
   - generative AI
   - education
