@@ -1,0 +1,43 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+          cache: pip
+
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          # Install just what the smoke test + appendix script need.
+          # Avoids the heavy dependencies (cartopy, geopandas) needed by
+          # the full pipeline but not by CI verification.
+          pip install pandas==2.3.1 numpy==2.3.2 pytest statsmodels==0.14.5 \
+                      matplotlib==3.10.5 seaborn==0.13.2 scikit-learn==1.7.1
+
+      - name: Run smoke tests
+        run: python -m pytest tests/ -v
+
+      - name: Reproduce appendix numbers
+        run: python paper/analysis_appendix.py
+
+      - name: Regenerate Figure 1 (LOWESS)
+        run: python paper/build_lowess_figure.py
+
+      - name: Regenerate Figures 4 + 6 (cluster means, obs vs. predicted)
+        run: python paper/build_results_figures.py
+
+      # Figure 2 (cluster map) is built by paper/build_cluster_map.py and
+      # needs geopandas + cartopy; not run in CI to keep the matrix light.

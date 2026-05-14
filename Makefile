@@ -1,0 +1,41 @@
+# Makefile for ai-schoolwork-search-interest
+#
+# Common entry points:
+#   make install    - install Python dependencies
+#   make figures    - regenerate Figure 1 (LOWESS) and Figures 4+6
+#                     (cluster means, obs vs. predicted)
+#   make map        - regenerate Figure 2 (DMA cluster map; requires
+#                     geopandas / cartopy)
+#   make appendix   - regenerate Appendix B and C numbers (cluster
+#                     geography + VIF)
+#   make verify     - run the smoke test suite
+#   make paper      - compile paper/main.tex to paper/main.pdf (requires
+#                     pdflatex + bibtex on PATH)
+#   make clean      - remove LaTeX build artifacts
+
+.PHONY: install figures map appendix verify paper clean help
+
+help:
+	@echo "Available targets: install figures map appendix verify paper clean"
+
+install:
+	python3 -m pip install -r requirements.txt
+
+figures:
+	python3 paper/build_lowess_figure.py
+	python3 paper/build_results_figures.py
+
+map:
+	python3 paper/build_cluster_map.py
+
+appendix:
+	python3 paper/analysis_appendix.py
+
+verify:
+	python3 -m pytest tests/ -v
+
+paper:
+	cd paper && pdflatex main.tex && bibtex main && pdflatex main.tex && pdflatex main.tex
+
+clean:
+	cd paper && rm -f main.aux main.bbl main.blg main.log main.out main.synctex.gz main.fdb_latexmk main.fls missfont.log *.tmp

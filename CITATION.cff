@@ -1,0 +1,47 @@
+cff-version: 1.2.0
+title: "Who Turns to AI for Schoolwork? Code, data, and paper"
+message: "If you use this software or dataset, please cite both the software (this entry) and the underlying paper."
+type: software
+authors:
+  - family-names: Porder
+    given-names: Dan
+    email: danporder@gmail.com
+date-released: 2026-05-10
+version: "1.0.0"
+license: MIT
+repository-code: "https://github.com/danporder/ai-schoolwork-search-interest"
+keywords:
+  - generative AI
+  - education
+  - digital divide
+  - Google Trends
+  - academic integrity
+  - ChatGPT
+  - DMA
+  - American Community Survey
+  - Stanford Education Data Archive
+abstract: >
+  Code and derived dataset for "Who Turns to AI for Schoolwork? Socioeconomic
+  and Educational Predictors of Student Interest in the ChatGPT Era." The
+  repository links 2019 pre-ChatGPT regional conditions (American Community
+  Survey, Stanford Education Data Archive) to 2023-2025 student-intent AI
+  search interest at the U.S. Designated Market Area (DMA) level.
+preferred-citation:
+  type: article
+  title: "Who Turns to AI for Schoolwork? Socioeconomic and Educational Predictors of Student Interest in the ChatGPT Era"
+  authors:
+    - family-names: Porder
+      given-names: Dan
+      email: danporder@gmail.com
+  year: 2026
+  abstract: >
+    Since ChatGPT's release in late 2022, adoption of generative AI by
+    students has been rapid but uneven. We ask what pre-existing
+    socioeconomic and educational conditions in a U.S. region predict its
+    students' later interest in using AI for schoolwork. Using Google
+    Trends search interest across 73 student-intent keywords (2023-2025) at
+    the Designated Market Area (DMA) level and a pre-ChatGPT 2019 snapshot
+    built from American Community Survey and Stanford Education Data
+    Archive records, we find that smaller, less affluent DMAs with lower
+    degree attainment and higher Black or Hispanic population shares show
+    the highest subsequent interest in AI for schoolwork.

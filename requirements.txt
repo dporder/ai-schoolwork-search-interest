@@ -1,0 +1,33 @@
+# Pinned dependencies for "Who Turns to AI for Schoolwork?"
+# Reproduced from the environment used to generate the paper's headline numbers.
+# Tested under Python 3.11.
+
+# Core scientific stack
+pandas==2.3.1
+numpy==2.3.2
+scipy==1.16.1
+scikit-learn==1.7.1
+statsmodels==0.14.5
+
+# Plotting
+matplotlib==3.10.5
+seaborn==0.13.2
+cartopy==0.25.0
+geopandas==1.1.1
+
+# Data acquisition
+pytrends==4.9.2
+census==0.8.24
+kaggle==1.7.4.5
+requests==2.32.4
+lxml==6.0.0
+
+# Utilities
+us==3.2.0
+thefuzz[speedup]==0.22.1
+fuzzywuzzy==0.18.0
+tqdm==4.67.1
+
+# Notebook execution
+nbclient==0.10.2
+ipykernel==6.30.1

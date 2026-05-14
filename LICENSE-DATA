@@ -1,0 +1,45 @@
+Data License: Creative Commons Attribution 4.0 International (CC BY 4.0)
+
+The derived datasets in this repository (in particular `data/processed/merged_dataset.csv`
+and any other DMA-level aggregates produced by the analysis pipeline) are
+licensed under the Creative Commons Attribution 4.0 International License.
+
+You are free to:
+  - Share — copy and redistribute the material in any medium or format
+  - Adapt — remix, transform, and build upon the material for any purpose,
+    even commercially.
+
+Under the following terms:
+  - Attribution — You must give appropriate credit, provide a link to the
+    license, and indicate if changes were made. You may do so in any reasonable
+    manner, but not in any way that suggests the licensor endorses you or your
+    use.
+
+Full license text: https://creativecommons.org/licenses/by/4.0/legalcode
+
+Suggested citation:
+  Porder, D. (2026). Who Turns to AI for Schoolwork? — derived dataset.
+  Available at: https://github.com/danporder/ai-schoolwork-search-interest
+
+------------------------------------------------------------------------------
+
+Upstream data sources retain their own licenses:
+
+  - American Community Survey 5-year estimates (2015–2019), U.S. Census Bureau:
+    Public domain (U.S. government work).
+  - Stanford Education Data Archive (SEDA) v5.0 / v2024:
+    Released under terms specified by the Reardon et al. authors at
+    https://purl.stanford.edu/pt329xg7054
+  - Google Trends search-interest values:
+    Subject to the Google Trends Terms of Service. We cache normalized
+    derived values rather than raw query strings; redistribution of large
+    raw query archives is not asserted.
+  - Nielsen DMA county/FIPS crosswalk (Kapastor on Kaggle):
+    Subject to Kaggle dataset terms.
+  - Nielsen DMA GeoJSON (simzou/nielsen-dma):
+    MIT license per the upstream repository.
+
+Users wishing to redistribute upstream data should consult the upstream
+licenses directly. The CC BY 4.0 license above applies to the derived
+DMA-level dataset produced by this analysis pipeline, not to the upstream
+inputs in their original form.

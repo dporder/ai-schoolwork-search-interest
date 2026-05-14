@@ -1,0 +1,6 @@
+Model,R2_mean,R2_sd,MAE_mean
+Random Forest,0.388,0.073,14.725
+Gradient Boost,0.38,0.149,14.688
+Lasso,0.16,0.056,20.21
+Ridge,0.157,0.065,20.193
+Linear,0.157,0.066,20.194
