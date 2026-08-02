@@ -37,22 +37,25 @@ AAAI_PREAMBLE = r"""% ==========================================================
 % ============================================================
 \documentclass[letterpaper]{article}
 
-% AAAI Author Kit 25. These style files are distributed by AAAI and are not
-% redistributable, so they are not committed to this repository. Download the
-% kit from https://aaai.org/authorkit25/ and place aaai25.sty (and companions)
-% in this directory before building. See README.md.
-\usepackage{aaai25}
+% AAAI Author Kit 25. aaai25.sty and aaai25.bst are distributed by AAAI and are
+% kept out of version control (see .gitignore). Download the kit from
+% https://aaai.org/authorkit25/ and place them in this directory. See README.md.
+%
+% The kit specifically FORBIDS several packages the journal build uses, notably
+% float, hyperref, geometry, authblk and setspace. None are needed here: the
+% body uses only [!htbp] float placement, and the one \href lived in the
+% code-availability section, which is replaced during anonymization.
+\usepackage[submission]{aaai25}  % 'submission' suppresses the copyright block
 \usepackage{times}
 \usepackage{helvet}
 \usepackage{courier}
 \usepackage[hyphens]{url}
 \usepackage{graphicx}
-\usepackage{natbib}
+\usepackage{natbib}   % no options permitted
+\usepackage{caption}  % no options permitted
 \usepackage{booktabs}
 \usepackage{amsmath, amssymb}
-\usepackage{placeins}
-\usepackage{float}
-\usepackage[caption=false]{subfig}
+\usepackage{placeins} % for \FloatBarrier, used in the body
 \urlstyle{rm}
 \def\UrlFont{\rm}
 \frenchspacing
@@ -63,14 +66,13 @@ AAAI_PREAMBLE = r"""% ==========================================================
 /TemplateVersion (2025.1)
 }
 
-\setcounter{secnumdepth}{0}
-
 \title{Who Turns to AI for Schoolwork? \\
 Socioeconomic and Educational Predictors of Student Interest in the ChatGPT Era}
 
-% ICWSM 2027 uses double-anonymous review. Author and affiliation are
-% suppressed for submission and restored for the camera-ready version.
-\author{}
+% ICWSM 2027 uses double-anonymous review. Per the AAAI Author Kit: "Anonymous
+% submissions must not include the author names and affiliations. Write
+% 'Anonymous Submission' as the 'sole author' and leave the affiliations empty."
+\author{Anonymous Submission}
 \affiliations{}
 
 \begin{document}
@@ -109,8 +111,10 @@ def main() -> None:
             f"expected exactly one availability section to anonymize, replaced {n_anon}"
         )
 
-    # 3. AAAI bibliography style
-    out = out.replace(r"\bibliographystyle{plainnat}", r"\bibliographystyle{aaai25}")
+    # 3. drop the explicit \bibliographystyle. aaai25.sty issues
+    #    \bibliographystyle{aaai25} itself, and a second one makes bibtex fail
+    #    with "Illegal, another \bibstyle command".
+    out = out.replace("\\bibliographystyle{plainnat}\n", "")
 
     # 4. bibliography lives one level up
     out = out.replace(r"\bibliography{refs}", r"\bibliography{../refs}")

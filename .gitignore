@@ -39,3 +39,15 @@ data/raw/*
 !data/raw/.gitkeep
 
 # Processed datasets, paper figures, and notebook outputs are intentionally committed.
+
+# AAAI Author Kit style files (distributed by AAAI, not redistributed here)
+paper/icwsm/aaai25.sty
+paper/icwsm/aaai25.bst
+
+# ICWSM variant build artifacts
+paper/icwsm/*.aux
+paper/icwsm/*.log
+paper/icwsm/*.bbl
+paper/icwsm/*.blg
+paper/icwsm/*.out
+paper/icwsm/main.pdf
