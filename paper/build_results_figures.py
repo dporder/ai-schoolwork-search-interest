@@ -4,18 +4,17 @@ so that they are consistent with Table 1 and Table 2 in the paper.
 
 Why these figures needed regenerating:
 
-  - Figure 4 (`fig_cluster_interest.pdf`) was originally produced from the
-    198 DMAs with observed search interest only, while Table 1 reports
-    cluster sizes (N=102, 20, 56, 2, 29) over all 209 DMAs. This script
-    rebuilds the figure with the headline convention from Section 3.1: the
-    11 below-threshold DMAs are imputed at zero, so cluster Ns and means
-    in Figure 4 now match Table 1 exactly.
+  - Figure 4 (`fig_cluster_interest.pdf`) plots mean interest per cluster
+    over the 198 DMAs with observed search interest, matching the primary
+    analytic sample defined in Section 3.1. Table 1's N column reports
+    cluster membership over all 209 DMAs, because the clustering uses
+    predictors only; the caption states this explicitly.
 
   - Figure 6 (`fig_obs_pred.pdf`) was originally produced from a default
-    (untuned) Gradient Boosting fit (R^2 ~ 0.398), while Table 2 in the
-    paper reports the tuned headline model (R^2 ~ 0.417). This script
-    rebuilds the figure from the tuned model so the in-figure R^2 matches
-    Table 2.
+    (untuned) Gradient Boosting fit. This script rebuilds it from the tuned
+    headline model on the observed-only sample. It is a single 5-fold pass
+    shown as a diagnostic of fit shape, so no R^2 is annotated on it; the
+    headline R^2 in Table 2 is a repeated-cross-validation figure.
 
 Run from the repo root:
     python3 paper/build_results_figures.py
@@ -72,14 +71,15 @@ CLUSTER_LABELS = {
 def build_cluster_interest(df: pd.DataFrame) -> None:
     """Figure 4: mean cluster search interest with bootstrap 95% CIs.
 
-    Uses the headline zero-imputation convention so that cluster Ns match
+    Uses the observed-only primary specification so that cluster Ns match
     Table 1.
     """
     rng = np.random.default_rng(42)
     n_boot = 2000
 
-    # Headline outcome with zero-imputed NaNs
-    y = df[TARGET].fillna(0).values
+    # Headline outcome: observed values only
+    df = df[df[TARGET].notna()]  # observed-only primary spec
+    y = df[TARGET].values
     cluster = df["cluster_id"].astype(int).values
 
     means, lo, hi, ns = [], [], [], []
@@ -127,12 +127,14 @@ def build_cluster_interest(df: pd.DataFrame) -> None:
 def build_obs_pred(df: pd.DataFrame) -> None:
     """Figure 6: observed vs cross-validated predicted from tuned GBM.
 
-    Uses the same outer 5-fold CV protocol as Table 2 so the in-figure R^2
-    matches Table 2's headline value.
+    A single 5-fold pass (random_state=42), shown as a diagnostic of fit shape.
+    The headline R^2 is reported in Table 2 under repeated cross-validation and
+    is deliberately not annotated on this figure.
     """
+    df = df[df[TARGET].notna()]  # observed-only primary spec
     imp = SimpleImputer(strategy="mean")
     X = imp.fit_transform(df[SUPERVISED])
-    y = df[TARGET].fillna(0).values
+    y = df[TARGET].values
 
     param_grid = {
         "n_estimators": [100, 200, 300],
@@ -163,7 +165,8 @@ def build_obs_pred(df: pd.DataFrame) -> None:
     ax.set_ylim(lims)
     ax.set_xlabel("Observed search interest", fontsize=11)
     ax.set_ylabel("Predicted search interest (5-fold CV)", fontsize=11)
-    ax.set_title(rf"Gradient Boost: CV $R^2 = {r2_mean:.3f} \pm {r2_sd:.3f}$",
+    _ = (r2_mean, r2_sd)  # reported in Table 2, not annotated here
+    ax.set_title("Gradient Boost: observed vs. cross-validated prediction",
                  fontsize=12)
     ax.grid(True, alpha=0.25, linestyle="--")
     ax.set_axisbelow(True)
@@ -179,7 +182,7 @@ def main() -> None:
     print(f"Loaded {len(df)} DMAs from {DATA_PATH}\n")
     print("=== Figure 4 (cluster interest, N matches Table 1) ===")
     build_cluster_interest(df)
-    print("\n=== Figure 6 (observed vs predicted, R^2 matches Table 2) ===")
+    print("\n=== Figure 6 (observed vs predicted, diagnostic, single 5-fold pass) ===")
     build_obs_pred(df)
 
 

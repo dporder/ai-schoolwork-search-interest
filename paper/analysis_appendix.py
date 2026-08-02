@@ -75,7 +75,9 @@ def main():
 
     # VIF (Appendix C)
     print("\n=== VIF (Appendix C, Table tab:vif) ===")
-    X = df[SUPERVISED].copy()
+    # Computed on the primary analytic sample (observed outcomes only, n=198),
+    # matching the supervised model in Section 5.4.
+    X = df[df["search_interest"].notna()][SUPERVISED].copy()
     X = X.fillna(X.mean())
     Xz = (X - X.mean()) / X.std()
     vifs = pd.DataFrame({

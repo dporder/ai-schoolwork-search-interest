@@ -5,6 +5,55 @@ All notable changes to this project will be documented in this file.
 The format follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [1.1.0] — unreleased
+
+Revisions made while preparing the paper for submission. **Numbers reported in
+this release differ from v1.0.0.** Anyone comparing against the v1.0.0 Zenodo
+record should read this section first.
+
+### Changed
+
+- **Primary analytic sample is now the 198 DMAs with observed search interest**,
+  rather than all 209 with the 11 unobserved outcomes coded at zero. Google
+  documents `NaN` as meaning either "unavailable" or "below an unspecified
+  reporting threshold" and does not distinguish the two, so neither treatment is
+  assumption-free. The paper now reports both throughout (see Section 3.1 and
+  Appendix E) and every substantive conclusion is the same under each.
+- **Headline model performance is now reported under repeated cross-validation**
+  (10 repetitions of 5-fold) rather than a single 5-fold split. The single-split
+  figure was unstable at this sample size: per-repetition means range from 0.29
+  to 0.47. Headline tuned-GBM R-squared is **0.39 (SD 0.11)**, replacing the
+  0.42 reported in v1.0.0.
+- Table 1 cluster means now average over observed outcomes only. Cluster 0 reads
+  45.2 (was 41.7) and Cluster 2 reads 19.7 (was 18.7). **The cluster ordering is
+  unchanged: C4 > C0 > C1 > C2 > C3.**
+- Table 2 regenerated on the primary sample under repeated cross-validation.
+- Appendix C variance inflation factors recomputed on n=198. All remain below 5.
+- Figures 1, 4, and 6 regenerated. Figure 6 no longer annotates an R-squared,
+  since it shows a single cross-validation pass as a fit-shape diagnostic while
+  the headline is a repeated-CV figure.
+- The OLS, Lasso, and bootstrap-Lasso stages previously mean-imputed the
+  *outcome* variable as an unintended side effect of imputing predictors and
+  outcome in one call. They now use the same observed-only sample as every other
+  stage. Coefficient signs, significance, and Lasso selection are unaffected.
+- Abstract, introduction, and conclusion reworded so that racial composition is
+  described at the level of the regional cluster typology rather than as an
+  independent predictor, which is what the data support.
+- Corrected the published repository URL throughout (`danporder` to `dporder`).
+- Bibliography corrections: `daepp2025` now cites the peer-reviewed ICWSM 2025
+  version; `darlinghammond2024` now cites the AERA Open article rather than its
+  data deposit, with the co-author's name corrected; plus fixes to
+  `wimberley2002`, `simzou`, `zhang2025`, and `nielsen2025`.
+
+### Added
+
+- `paper/robustness_appendix.py` and `make robustness`, regenerating Appendix E:
+  the tuned model under four analytic samples, each re-tuned within its own
+  sample and scored with repeated cross-validation.
+- Appendix E to the paper, reporting both missing-outcome treatments plus a
+  small-DMA check and a winsorization check.
+- `vonhippel2007` to the bibliography, supporting the complete-case rationale.
+
 ## [1.0.0] — 2026-05-10
 
 Initial public release accompanying the paper "Who Turns to AI for Schoolwork?"
@@ -25,6 +74,7 @@ Initial public release accompanying the paper "Who Turns to AI for Schoolwork?"
     - `paper/build_lowess_figure.py` — Figure 1 (LOWESS panels).
     - `paper/analysis_appendix.py` — Appendix B and C numbers (cluster
       geography, VIF).
+    - `paper/build_results_figures.py` — Figures 4 and 6.
 - Per-dataset provenance log (`data/README.md`).
 - Pinned Python dependencies (`requirements.txt`).
 - MIT license for code; CC BY 4.0 for the derived dataset.
@@ -39,4 +89,5 @@ Initial public release accompanying the paper "Who Turns to AI for Schoolwork?"
   `CENSUS_API_KEY`, `KAGGLE_USERNAME`, and `KAGGLE_KEY` environment variables;
   see `.env.example`.
 
-[1.0.0]: https://github.com/danporder/ai-schoolwork-search-interest/releases/tag/v1.0.0
+[1.1.0]: https://github.com/dporder/ai-schoolwork-search-interest/releases/tag/v1.1.0
+[1.0.0]: https://github.com/dporder/ai-schoolwork-search-interest/releases/tag/v1.0.0

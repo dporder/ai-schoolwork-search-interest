@@ -21,9 +21,11 @@
 \large Socioeconomic and Educational Predictors of Student Interest in the ChatGPT Era}
 
 \author[1]{Daniel Clopton Porder}
-\affil[1]{University of London}
+\affil[1]{University of London \\ \texttt{danporder@gmail.com}}
+% ORCID: register free at https://orcid.org and add here (expected by most journals),
+% e.g. \affil[1]{University of London \\ \url{https://orcid.org/0000-0000-0000-0000}}
 
-\date{\today}
+\date{July 2026}
 
 \begin{document}
 \maketitle
@@ -31,7 +33,7 @@
 % ==========================================================
 \begin{abstract}
 \noindent
-Since ChatGPT's release in late 2022, adoption of generative AI by students has been rapid but uneven. This study links regional socioeconomic and educational conditions before ChatGPT’s release to subsequent student-oriented interest in using AI for schoolwork. Using Google Trends search interest across 73 student-intent keywords (2023--2025) at the Designated Market Area (DMA) level and a pre-ChatGPT 2019 snapshot built from American Community Survey and Stanford Education Data Archive records, we find that smaller, less affluent DMAs with lower degree attainment and higher Black or Hispanic population shares show the highest subsequent interest in AI for schoolwork. A gradient boosting model trained on seven 2019 features explains roughly 42\% of cross-DMA variance in 2023--2025 search interest under 5-fold cross-validation. The pattern is counterintuitive relative to the documented regional divide in general-purpose ChatGPT awareness and search interest, but it is consistent with newer student-level survey evidence showing elevated schoolwork-related AI use among Black and Hispanic teens. The findings suggest that student interest in AI for schoolwork may track structural inequity rather than simple early-adopter advantage. This has direct implications for how schools design AI academic-integrity policies: punitive enforcement regimes will fall hardest on Black, Hispanic, and lower-income students whose schoolwork-related AI demand appears highest. We argue that student AI interest is best treated as symptomatic of resource gaps, not as misconduct to be policed.
+Since ChatGPT's release in late 2022, adoption of generative AI by students has been rapid but uneven. This study links regional socioeconomic and educational conditions before ChatGPT’s release to subsequent student-oriented interest in using AI for schoolwork. Using Google Trends search interest across 73 student-intent keywords (2023--2025) at the Designated Market Area (DMA) level and a pre-ChatGPT 2019 snapshot built from American Community Survey and Stanford Education Data Archive records, we find that smaller, less affluent DMAs with lower degree attainment show the highest subsequent interest in AI for schoolwork. A gradient boosting model trained on seven 2019 features explains roughly 39\% of cross-DMA variance in 2023--2025 search interest under repeated cross-validation. A five-cluster regional typology places a non-metropolitan Southern cluster with markedly elevated Black population shares at the top of the interest ranking and Hispanic-majority Southwestern metros third, though racial composition is not itself an independent predictor once attainment and income are accounted for. The pattern is counterintuitive relative to the documented regional divide in general-purpose ChatGPT awareness and search interest, and it converges with newer student-level survey evidence showing elevated schoolwork-related AI use among Black and Hispanic teens. The findings suggest that student interest in AI for schoolwork may track structural inequity rather than simple early-adopter advantage. This has direct implications for how schools design AI academic-integrity policies: punitive enforcement regimes will fall hardest on the lower-income, lower-attainment communities where schoolwork-related AI demand appears highest, and, on the survey and discipline-disparity evidence, disproportionately on Black and Hispanic students within them. We argue that student AI interest is best treated as symptomatic of resource gaps, not as misconduct to be policed.
 \end{abstract}
 
 \noindent\textbf{Keywords:} generative AI; education; digital divide; Google Trends; academic integrity; ChatGPT.
@@ -45,13 +47,13 @@ Research on the population-level distribution of generative AI has so far focuse
 
 This paper asks: \emph{what socioeconomic and educational conditions in a U.S.\ region in 2019 predict its students' interest in using generative AI for schoolwork in 2023--2025?} The unit of analysis is the Designated Market Area (DMA), the Nielsen-defined regional grouping at which Google Trends exposes search-interest data~\citep{nielsen2025}. The framing deliberately ties a pre-ChatGPT ``snapshot'' to post-ChatGPT interest. We use 2019 conditions rather than a 2023--2025 cross-sectional design for three reasons. First, 2019 conditions cannot have been caused by post-2022 AI search behavior, ruling out reverse causality at the level of the predictors. Second, 2019 reflects the structural pre-AI educational and economic landscape; using contemporaneous conditions would conflate pre-existing inequality with pandemic disruption, post-pandemic recovery, and any AI-induced changes (e.g., school AI policy adoption, AI-related shifts in employment). Third, 2019 is the last fully pre-COVID, pre-ChatGPT school year for which county-level achievement data are unambiguously a baseline. The design therefore lets us ask whether student AI interest is tracking prior \emph{advantage} (a fast-followers story in which the resource-rich first adopt new technology) or prior \emph{disadvantage} (an access-seeking story in which students turn to AI precisely where schools or households are under-resourced).
 
-We find the latter. The result holds across multiple methods (OLS, Lasso, bootstrap Lasso, an unsupervised k-means typology, supervised gradient boosting regression). Regions that in 2019 were smaller, poorer, less educated, and had higher Black or Hispanic population shares show the highest 2023--2025 student AI-for-schoolwork search interest. Seven 2019 features explain about 42\% of the cross-region variance in that interest under 5-fold cross-validation.
+We find the latter. The result holds across multiple methods (OLS, Lasso, bootstrap Lasso, an unsupervised k-means typology, supervised gradient boosting regression). Regions that in 2019 were smaller, poorer, and less educated show the highest 2023--2025 student AI-for-schoolwork search interest. Racial composition enters this picture at the level of the regional typology rather than as an independent marginal effect: the highest-interest cluster is a non-metropolitan Southern group with markedly elevated Black population shares, but neither Black nor Hispanic share is a significant predictor in the supervised feature set once attainment and income are held constant. Seven 2019 features explain about 39\% of the cross-region variance in that interest under repeated cross-validation.
 
 The paper's contributions are:
 \begin{itemize}
     \item A cross-sectional, DMA-level dataset linking 2019 pre-ChatGPT socioeconomic and educational conditions to 2023--2025 student-intent AI search interest, assembled from Google Trends, the American Community Survey, and the Stanford Education Data Archive (SEDA).
     \item An adaptation of the anchor-bank principle of \citet{west2020} to a 19-batch student-intent keyword design at the DMA level, allowing many low-volume student-intent terms to be placed on a common scale despite the Google Trends API's relative-only volume reporting.
-    \item Evidence that pre-existing socioeconomic and educational disadvantage predicts higher regional student-intent AI-for-schoolwork search interest, a pattern that diverges from the geography of general-purpose ChatGPT search interest and converges with newer survey evidence on schoolwork-related chatbot use among Black and Hispanic teens.
+    \item Evidence that pre-existing socioeconomic and educational disadvantage predicts higher regional student-intent AI-for-schoolwork search interest, a pattern that diverges from the geography of general-purpose ChatGPT search interest and whose highest-interest regional cluster converges with newer survey evidence on schoolwork-related chatbot use among Black and Hispanic teens.
     \item A policy proposition: if interest signals access-seeking, then punitive AI policies in schools will disproportionately harm the communities whose students have the strongest motivation to use the technology.
 \end{itemize}
 
@@ -101,7 +103,11 @@ We average the anchor-normalized per-keyword scores within each DMA to obtain a 
 Google Trends reports normalized relative search interest rather than absolute search volume. Each value is computed as the share of all searches in the geography and time range that match the query, then re-scaled to 0--100 within the comparison batch~\citep{googletrends}. The outcome is therefore a per-capita-style relative measure, not an absolute volume measure: a small DMA in which a large fraction of searches are about AI for schoolwork will register a higher value than a large DMA in which a small fraction are. This is exactly the interpretation we want, since regional claims of the form ``smaller DMAs show higher interest'' are claims about per-capita propensity, not about absolute query counts. The anchor-normalized score makes keyword batches comparable but does not recover absolute query volume. In robustness checks, we therefore treat the outcome as an information-seeking signal and test sensitivity to keyword families, especially academic-integrity and detector-related terms that may reflect concern about enforcement rather than direct use of AI tools.
 
 \paragraph{Missingness and the analytic sample.}
-Google Trends returns \texttt{NaN} when a keyword's volume falls below an unspecified reporting threshold in a given region~\citep{googletrends}. The Trends outcome is pulled directly at DMA resolution and is not aggregated from any sub-DMA geography; it is the ACS and SEDA covariates that are aggregated up from county to DMA. After anchor normalization within and across batches and merging with the county-to-DMA-aggregated ACS and SEDA covariates, eleven low-population DMAs---Alpena MI, Glendive MT, Helena MT, Juneau AK, North Platte NE, Presque Isle ME, Zanesville OH, Fairbanks AK, Mankato MN, Ottumwa IA-Kirksville MO, and St.\ Joseph MO---have no observed search-interest value. We treat \texttt{NaN} here as effectively zero search activity, consistent with Google's documented sub-threshold reporting behavior.
+Google Trends returns \texttt{NaN} when a keyword's volume falls below an unspecified reporting threshold in a given region~\citep{googletrends}. The Trends outcome is pulled directly at DMA resolution and is not aggregated from any sub-DMA geography; it is the ACS and SEDA covariates that are aggregated up from county to DMA. After anchor normalization within and across batches and merging with the county-to-DMA-aggregated ACS and SEDA covariates, eleven low-population DMAs (Alpena MI, Glendive MT, Helena MT, Juneau AK, North Platte NE, Presque Isle ME, Zanesville OH, Fairbanks AK, Mankato MN, Ottumwa IA-Kirksville MO, and St.\ Joseph MO) have no observed search-interest value.
+
+Google documents \texttt{NaN} as indicating volume that is either unavailable or below an unspecified reporting threshold, and it does not distinguish the two cases. Neither available treatment is therefore assumption-free, and the two err in opposite directions. Excluding these DMAs is the conventional complete-case choice and avoids assigning a fabricated value to the dependent variable~\citep{vonhippel2007}, but the missingness is not ignorable. These regions are unobserved precisely because their search volume was low, and they are small and rural, which is the profile our results in Section~\ref{sec:results} associate with \emph{higher} interest. Excluding them may therefore flatter the reported gradient. Coding them at zero instead treats ``unmeasurably small'' as ``lowest possible interest,'' which is a strong assumption, but a conservative one. Zero lies below the lowest observed value in the data, so this coding attenuates the gradient rather than inflating it.
+
+Because neither treatment is clearly correct, we adopt the complete-case sample of 198 DMAs as the primary analytic sample and report the zero-coded 209-DMA sample alongside it throughout. Appendix~\ref{sec:approbust} reports both, together with two further sensitivity checks. The cluster ordering in Section~\ref{sec:results} is the same under both treatments, as are the direction and significance of every predictor gradient we report.
 
 \subsection{Socioeconomic snapshot (ACS 2019)}
 
@@ -118,7 +124,7 @@ Regional student achievement comes from the Stanford Education Data Archive, fil
 
 \subsection{Geographic merge}
 
-County records from ACS and SEDA are aggregated to the DMA level using a publicly available FIPS-to-DMA crosswalk~\citep{kapastor2021}. For rates we compute population-weighted means, and for counts we sum. After merging with the Google Trends scores, the full analytic frame contains 209 DMAs with complete predictor information. 198 of these have observed search-interest outcomes and 11 are zero-imputed in the headline supervised model as discussed above. Table~\ref{tab:vars} in Appendix~\ref{sec:appdata} lists all variables.
+County records from ACS and SEDA are aggregated to the DMA level using a publicly available FIPS-to-DMA crosswalk~\citep{kapastor2021}. For rates we compute population-weighted means, and for counts we sum. After merging with the Google Trends scores, the full analytic frame contains 209 DMAs with complete predictor information, of which 198 have observed search-interest outcomes. The primary models use those 198; the remaining 11 enter only through the zero-coded sample reported alongside. Table~\ref{tab:vars} in Appendix~\ref{sec:appdata} lists all variables.
 
 % ==========================================================
 \section{Methods}
@@ -143,10 +149,11 @@ Cluster assignments are then plotted geographically. DMA names differ between th
 
 To assess how much of the variance in 2023--2025 AI-for-schoolwork interest is attributable to 2019 conditions, we train supervised regressors to predict \texttt{search\_interest}. The headline supervised model uses a parsimonious seven-feature set---\texttt{median\_income}, \texttt{bach\_plus\_rate}, \texttt{population}, \texttt{pct\_hispanic}, \texttt{pct\_nh\_black}, \texttt{pct\_nh\_asian}, and \texttt{score\_all\_ela}---chosen to retain population (which contributes substantial variance to the supervised target despite being deliberately excluded from clustering) while dropping \texttt{pct\_nh\_white} to reduce collinearity with the other racial-composition shares. The supervised seven-feature set therefore differs from the clustering seven-feature set by swapping \texttt{pct\_nh\_white} for \texttt{population}; this distinction matters and we keep it explicit throughout.
 
-We evaluate Linear, Ridge, Lasso, Random Forest, and Gradient Boosting under 5-fold cross-validation with \texttt{random\_state=42}. Linear, Ridge, and Lasso converge to roughly equivalent performance ($R^2 \approx 0.16$); Random Forest and Gradient Boosting both produce a substantially higher $R^2 \approx 0.39$, with Gradient Boosting marginally ahead of Random Forest after hyperparameter tuning. We therefore select tuned Gradient Boosting as the headline model, and use a grid search over \texttt{n\_estimators}, \texttt{learning\_rate}, \texttt{max\_depth}, and \texttt{min\_samples\_split} (with 5-fold CV inside the search) to fix its hyperparameters, then report mean $\pm$ SD of $R^2$ across an outer 5-fold cross-validation. The full comparison is reported in Section~\ref{sec:supervised}; the linear and tree-ensemble families agree qualitatively on which features matter most, but disagree by more than a factor of two on $R^2$, which is the basis for selecting the tree-ensemble family for the headline. Poverty rate, graduate/professional rate, and \texttt{pct\_nh\_white} are retained for sensitivity checks but excluded from the headline model to reduce redundancy.
+We evaluate Linear, Ridge, Lasso, Random Forest, and Gradient Boosting under repeated cross-validation with \texttt{random\_state=42}. Linear, Ridge, and Lasso converge to roughly equivalent performance ($R^2 \approx 0.15$), while Random Forest and Gradient Boosting both produce a substantially higher $R^2$ in the range $0.39$ to $0.42$. The two tree ensembles are close in mean performance, with the untuned Random Forest marginally ahead, but the tuned Gradient Boosting model is markedly more stable across fold assignments. We therefore select tuned Gradient Boosting as the headline model on the basis of stability rather than mean alone, and use a grid search over \texttt{n\_estimators}, \texttt{learning\_rate}, \texttt{max\_depth}, and \texttt{min\_samples\_split} (with 5-fold CV inside the search) to fix its hyperparameters, then report mean $\pm$ SD of $R^2$ across 10 repetitions of an outer 5-fold cross-validation. The full comparison is reported in Section~\ref{sec:supervised}; the linear and tree-ensemble families agree qualitatively on which features matter most, but disagree by more than a factor of two on $R^2$, which is the basis for selecting the tree-ensemble family for the headline. Poverty rate, graduate/professional rate, and \texttt{pct\_nh\_white} are retained for sensitivity checks but excluded from the headline model to reduce redundancy.
 
 % ==========================================================
 \section{Results}
+\label{sec:results}
 
 \subsection{Univariate relationships}
 
@@ -186,18 +193,18 @@ The k-means solution with $k=5$ partitions the 209 DMAs into interpretable group
 \toprule
 Cluster & N & Median income & Bach+ & Asian \% & Mean pop. & Mean interest \\
 \midrule
-0 (rural \& small-metro)         & 102 & \$53{,}587 & 24.8\% & \phantom{0}1.5\% & \phantom{0,}741{,}215 & 41.7 \\
+0 (rural \& small-metro)         & 102 & \$53{,}587 & 24.8\% & \phantom{0}1.5\% & \phantom{0,}741{,}215 & 45.2 \\
 1 (Hispanic SW metros)           & \phantom{0}20 & \$55{,}049 & 23.1\% & \phantom{0}3.1\% & 2{,}070{,}279 & 40.9 \\
-2 (large national metros)        & \phantom{0}56 & \$68{,}095 & 35.0\% & \phantom{0}4.4\% & 3{,}133{,}189 & 18.7 \\
+2 (large national metros)        & \phantom{0}56 & \$68{,}095 & 35.0\% & \phantom{0}4.4\% & 3{,}133{,}189 & 19.7 \\
 3 (SF + Honolulu)                & \phantom{00}2 & \$94{,}886 & 40.8\% & 31.6\% & 4{,}420{,}855 & 11.2 \\
 4 (rural Southern Black Belt)    & \phantom{0}29 & \$46{,}838 & 22.3\% & \phantom{0}1.3\% & \phantom{0,}724{,}828 & 50.1 \\
 \bottomrule
 \end{tabular}
-\caption{DMA typology: cluster means on defining variables and on 2023--2025 mean AI-for-schoolwork search interest. The Mean-interest column averages the headline outcome over all DMAs assigned to each cluster, with the 11 below-threshold DMAs imputed at zero (consistent with the supervised model's headline convention; see Section~\ref{sec:data}).}
+\caption{DMA typology: cluster means on defining variables and on 2023--2025 mean AI-for-schoolwork search interest. The N column gives cluster membership across all 209 DMAs, since the clustering uses predictors only; the Mean-interest column averages the outcome over the 198 DMAs with observed search interest. The cluster ordering is identical under the zero-coded sample, in which Cluster~0 reads 41.7 and Cluster~2 reads 18.7 (Appendix~\ref{sec:approbust}).}
 \label{tab:clusters}
 \end{table}
 
-Mean AI-for-schoolwork search interest \emph{inverts} the regional ranking documented for general-purpose ChatGPT search interest by \citet{daepp2025}, in which higher-income, more-educated, and disproportionately Asian-American regions show the highest interest. Here, the highest-interest cluster is Cluster 4 (rural Southern Black-Belt-region DMAs, mean interest 50.1), followed by Cluster 0 (rural and small-metropolitan predominantly white DMAs, 41.7) and Cluster 1 (Hispanic-majority Southwestern metros, 40.9). Cluster 2 (large national metros, 18.7) and Cluster 3 (SF + Honolulu, 11.2) occupy the bottom of the ranking. The highest-interest groups are concentrated among the lower-income clusters, while the affluent large-metro cluster and the small high-Asian-share metro pair show the lowest mean search interest.
+Mean AI-for-schoolwork search interest \emph{inverts} the regional ranking documented for general-purpose ChatGPT search interest by \citet{daepp2025}, in which higher-income, more-educated, and disproportionately Asian-American regions show the highest interest. Here, the highest-interest cluster is Cluster 4 (rural Southern Black-Belt-region DMAs, mean interest 50.1), followed by Cluster 0 (rural and small-metropolitan predominantly white DMAs, 45.2) and Cluster 1 (Hispanic-majority Southwestern metros, 40.9). Cluster 2 (large national metros, 19.7) and Cluster 3 (SF + Honolulu, 11.2) occupy the bottom of the ranking. The highest-interest groups are concentrated among the lower-income clusters, while the affluent large-metro cluster and the small high-Asian-share metro pair show the lowest mean search interest.
 
 \begin{figure}[!htbp]
 \centering
@@ -224,9 +231,9 @@ Mean AI-for-schoolwork search interest \emph{inverts} the regional ranking docum
 \subsection{Supervised prediction}
 \label{sec:supervised}
 
-We compared five regressors on the seven-feature supervised predictor set using 5-fold cross-validation (Table~\ref{tab:models}). Tree ensembles clearly outperform the linear family. Under 5-fold CV with grid-searched hyperparameters and \texttt{random\_state=42}, the tuned gradient boosting model achieves mean $R^2 = 0.42 \pm 0.12$ (SD across folds) and a mean absolute error of $\approx 14.2$ search-interest points. A single 80/20 split estimate of $R^2 = 0.547$ provides a useful upper-end reference, but at $n=209$ a single split is too sensitive to fold composition, and the cross-validated value is the appropriate honest estimate.
+We compared five regressors on the seven-feature supervised predictor set using repeated cross-validation (Table~\ref{tab:models}). Tree ensembles clearly outperform the linear family. Under 10 repetitions of 5-fold cross-validation with grid-searched hyperparameters, the tuned gradient boosting model achieves mean $R^2 = 0.39$ (SD 0.11 across the 50 folds, with per-repetition means ranging from 0.29 to 0.47) and a mean absolute error of $\approx 15.6$ search-interest points. We use repeated rather than single-split cross-validation because at $n=198$ a single fold assignment is unstable. Appendix~\ref{sec:approbust} reports the spread across repetitions and across alternative analytic samples.
 
-We take the CV-based $R^2 \approx 0.42$ as the headline. It is substantially lower than the single-split estimate, but it still comfortably exceeds the $R^2 \approx 0.16$ ceiling of any linear model on the same features, and it is respectable given the small sample ($n=209$) and the measurement limits of both Google Trends and county-level ACS/SEDA aggregates. The qualitative story---that pre-existing disadvantage predicts subsequent student AI-for-schoolwork interest---is unchanged.
+We take the repeated-CV $R^2 \approx 0.39$ as the headline. It comfortably exceeds the $R^2 \approx 0.15$ ceiling of any linear model on the same features, and it is respectable given the small sample ($n=198$) and the measurement limits of both Google Trends and county-level ACS/SEDA aggregates. An untuned random forest attains a marginally higher mean ($R^2 = 0.42$) but with more than double the dispersion (SD 0.26 against 0.11). We therefore retain the tuned gradient boosting model as the headline on the basis of stability rather than mean alone. The qualitative story, that pre-existing disadvantage predicts subsequent student AI-for-schoolwork interest, is the same under every specification we examined.
 
 \begin{table}[!htbp]
 \centering
@@ -235,15 +242,15 @@ We take the CV-based $R^2 \approx 0.42$ as the headline. It is substantially low
 \toprule
 Model & CV $R^2$ mean & CV $R^2$ SD & CV MAE \\
 \midrule
-Random Forest             & 0.388 & 0.073 & 14.7 \\
-Gradient Boost (tuned)    & 0.417 & 0.122 & 14.2 \\
-Gradient Boost (default)  & 0.380 & 0.149 & 14.7 \\
-Lasso                     & 0.160 & 0.056 & 20.2 \\
-Ridge                     & 0.157 & 0.065 & 20.2 \\
-Linear                    & 0.157 & 0.066 & 20.2 \\
+Random Forest             & 0.418 & 0.259 & 13.1 \\
+Gradient Boost (tuned)    & 0.388 & 0.112 & 15.6 \\
+Gradient Boost (default)  & 0.315 & 0.362 & 14.2 \\
+Lasso                     & 0.167 & 0.148 & 19.7 \\
+Ridge                     & 0.151 & 0.183 & 19.8 \\
+Linear                    & 0.150 & 0.184 & 19.8 \\
 \bottomrule
 \end{tabular}
-\caption{Cross-validated performance (5 folds, \texttt{random\_state=42}) of five regressors on the final seven-feature supervised predictor set (\texttt{median\_income}, \texttt{bach\_plus\_rate}, \texttt{population}, \texttt{pct\_hispanic}, \texttt{pct\_nh\_black}, \texttt{pct\_nh\_asian}, \texttt{score\_all\_ela}). The tuned gradient boosting model (grid search over \texttt{n\_estimators} $\in\{100,200,300\}$, \texttt{learning\_rate} $\in\{0.01,0.1,0.2\}$, \texttt{max\_depth} $\in\{3,5,7\}$, \texttt{min\_samples\_split} $\in\{2,5\}$) is the reported headline model.}
+\caption{Cross-validated performance (10 repetitions of 5-fold cross-validation, \texttt{random\_state=42}) of five regressors on the final seven-feature supervised predictor set (\texttt{median\_income}, \texttt{bach\_plus\_rate}, \texttt{population}, \texttt{pct\_hispanic}, \texttt{pct\_nh\_black}, \texttt{pct\_nh\_asian}, \texttt{score\_all\_ela}), estimated on the 198 DMAs with observed search interest. SD is taken across all 50 folds. The untuned random forest attains a marginally higher mean than the tuned gradient boosting model but with more than double the dispersion; the tuned gradient boosting model (grid search over \texttt{n\_estimators} $\in\{100,200,300\}$, \texttt{learning\_rate} $\in\{0.01,0.1,0.2\}$, \texttt{max\_depth} $\in\{3,5,7\}$, \texttt{min\_samples\_split} $\in\{2,5\}$) is the reported headline model.}
 \label{tab:models}
 \end{table}
 
@@ -299,13 +306,13 @@ The regional concentration of demand has a further implication that the school-l
 % ==========================================================
 \section{Conclusion}
 
-We asked what pre-ChatGPT regional conditions predict 2023--2025 student-intent search interest in AI for schoolwork. The answer is: smaller, lower-income, less-educated DMAs with higher shares of Black and Hispanic residents, which is an inversion of the usual ``technology adoption tracks advantage'' story and a divergence from the general-purpose ChatGPT search divide documented in prior regional work. A gradient-boosting model on seven 2019 features explains about 42\% of the cross-region variance in post-ChatGPT student AI-for-schoolwork search interest under 5-fold cross-validation. The result aligns with newer student-level survey evidence showing elevated schoolwork-related chatbot use among Black and Hispanic teens, but it adds a distinct regional signal: places with smaller populations, lower income, and lower educational attainment show greater search interest in AI for schoolwork. The findings do not identify why, but they narrow the set of plausible explanations, from which we highlight three (access-seeking, disengagement, and non-student traffic), all of which have the same policy implication. That is, we should treat student AI interest as a signal of resource gaps, not as misconduct to be policed, and resist blanket punitive responses that will fall hardest on the communities most motivated to use the tools.
+We asked what pre-ChatGPT regional conditions predict 2023--2025 student-intent search interest in AI for schoolwork. The answer is: smaller, lower-income, less-educated DMAs, which is an inversion of the usual ``technology adoption tracks advantage'' story and a divergence from the general-purpose ChatGPT search divide documented in prior regional work. Racial composition tracks this pattern regionally, in that the top-ranked cluster is a non-metropolitan Southern group with markedly elevated Black population shares, but it is not an independent predictor of interest in its own right. A gradient-boosting model on seven 2019 features explains about 39\% of the cross-region variance in post-ChatGPT student AI-for-schoolwork search interest under repeated cross-validation. The regional signal reported here is that places with smaller populations, lower income, and lower educational attainment show greater search interest in AI for schoolwork. That signal is distinct from, and independently corroborated by, student-level survey evidence showing elevated schoolwork-related chatbot use among Black and Hispanic teens. Because the present design is ecological, the survey evidence carries the individual-level claim, while this study carries the geographic one. The findings do not identify why, but they narrow the set of plausible explanations, from which we highlight three (access-seeking, disengagement, and non-student traffic), all of which have the same policy implication. That is, we should treat student AI interest as a signal of resource gaps, not as misconduct to be policed, and resist blanket punitive responses that will fall hardest on the communities most motivated to use the tools.
 
 \paragraph{Future work.} Several extensions stand out. First, linking interest to actual usage---for example, via telemetry from school-sponsored AI tools, or via cross-walk to school-district-level survey data---would disambiguate the three interpretations and quantify the share of search interest attributable to students themselves rather than to parents, teachers, or other adult populations. Second, qualitative fieldwork in representative high- and low-interest DMAs would surface mechanisms (e.g., school AI policy, household device access, parental supervision) that quantitative signals cannot. Third, a longitudinal version of this study run annually would show whether the inverse relationship stabilizes, attenuates, or flips as generative AI diffuses further. Fourth, a more granular keyword decomposition (separating academic-integrity terms from help-seeking terms from school-policy terms) would test whether the regional pattern is driven primarily by help-seeking, by enforcement concern, or by both.
 
 % ==========================================================
 \section*{Code and data availability}
-Code, processed data, and the reproducible analysis notebook are available at \url{https://github.com/danporder/ai-schoolwork-search-interest} and archived at \href{https://doi.org/10.5281/zenodo.20185969}{doi:10.5281/zenodo.20185969}. Raw Google Trends responses are provided as CSVs; Trends queries are not guaranteed to replicate exactly over time because the underlying API is non-deterministic.
+Code, processed data, and the reproducible analysis notebook are available at \url{https://github.com/dporder/ai-schoolwork-search-interest} and archived at \href{https://doi.org/10.5281/zenodo.20185969}{doi:10.5281/zenodo.20185969}. Raw Google Trends responses are provided as CSVs; Trends queries are not guaranteed to replicate exactly over time because the underlying API is non-deterministic.
 
 % ==========================================================
 \bibliographystyle{plainnat}
@@ -403,17 +410,42 @@ Table~\ref{tab:vif} reports variance inflation factors for the seven supervised 
 \toprule
 Feature & VIF \\
 \midrule
-\texttt{median\_income}    & 4.18 \\
-\texttt{bach\_plus\_rate}  & 3.31 \\
-\texttt{pct\_nh\_asian}    & 1.82 \\
-\texttt{population}        & 1.67 \\
-\texttt{score\_all\_ela}   & 1.48 \\
-\texttt{pct\_nh\_black}    & 1.47 \\
-\texttt{pct\_hispanic}     & 1.24 \\
+\texttt{median\_income}    & 4.32 \\
+\texttt{bach\_plus\_rate}  & 3.30 \\
+\texttt{pct\_nh\_asian}    & 1.83 \\
+\texttt{population}        & 1.70 \\
+\texttt{pct\_nh\_black}    & 1.49 \\
+\texttt{score\_all\_ela}   & 1.47 \\
+\texttt{pct\_hispanic}     & 1.26 \\
 \bottomrule
 \end{tabular}
-\caption{Variance inflation factors for the seven supervised features (z-scored, $n=209$). All values are below the conventional VIF threshold of 5.}
+\caption{Variance inflation factors for the seven supervised features (z-scored, $n=198$). All values are below the conventional VIF threshold of 5.}
 \label{tab:vif}
 \end{table}
+
+% ==========================================================
+\section{Robustness to the treatment of missing outcomes and to influential observations}
+\label{sec:approbust}
+
+Section~\ref{sec:data} adopts the 198 DMAs with observed search interest as the primary analytic sample, and notes that the alternative treatment, coding the eleven unobserved DMAs at zero, errs in the opposite direction. Table~\ref{tab:robust} reports the tuned gradient boosting model under both treatments, together with two further sensitivity checks: dropping the smallest 20\% of DMAs by population, which addresses the concern that Google Trends is least reliable at low search volume, and winsorizing the outcome at its 99th percentile, which addresses the influence of the most extreme observed values.
+
+\begin{table}[!htbp]
+\centering
+\small
+\begin{tabular}{lrrr}
+\toprule
+Analytic sample & $N$ & $R^2$ mean (SD) & Per-repetition range \\
+\midrule
+Observed outcomes only (primary)      & 198 & 0.388 (0.112) & 0.294--0.474 \\
+Unobserved outcomes coded at zero     & 209 & 0.352 (0.262) & 0.153--0.439 \\
+Smallest 20\% of DMAs dropped         & 158 & 0.431 (0.202) & 0.317--0.556 \\
+Outcome winsorized at 99th percentile & 198 & 0.415 (0.087) & 0.369--0.475 \\
+\bottomrule
+\end{tabular}
+\caption{Tuned gradient boosting model under four analytic samples, each estimated with 10 repetitions of 5-fold cross-validation and re-tuned within its own sample. SD is taken across all 50 folds; the per-repetition range gives the smallest and largest of the ten repetition-level means.}
+\label{tab:robust}
+\end{table}
+
+Three points follow. First, every alternative sample yields a mean $R^2$ at or above the primary specification except the deliberately conservative zero-coded sample, which is also by far the least stable (SD 0.262 against 0.112). Coding unobserved DMAs at the floor therefore adds variance rather than information, consistent with the argument in Section~\ref{sec:data} that it attenuates rather than inflates the reported gradient. Second, dropping the smallest DMAs \emph{strengthens} the fit, which is the opposite of what a low-volume Google Trends artifact would predict. Third, the cluster ordering reported in Section~\ref{sec:results} is identical under both outcome treatments, as are the sign and significance of every univariate gradient we report.
 
 \end{document}

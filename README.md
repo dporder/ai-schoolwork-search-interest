@@ -7,19 +7,24 @@
 
 Code, data, and paper for **"Who Turns to AI for Schoolwork? Socioeconomic
 and Educational Predictors of Student Interest in the ChatGPT Era"** by
-Dan Porder.
+Daniel Clopton Porder.
 
 We link 2019 pre-ChatGPT regional conditions (American Community Survey,
 Stanford Education Data Archive) to 2023-2025 student-intent AI search
 interest at the U.S. Designated Market Area (DMA) level. The headline
-finding: smaller, less affluent DMAs with lower degree attainment and
-higher Black or Hispanic population shares show the highest subsequent
-interest in AI for schoolwork — an inversion of the regional pattern
-documented for general-purpose ChatGPT search interest.
+finding: smaller, less affluent DMAs with lower degree attainment show
+the highest subsequent interest in AI for schoolwork, an inversion of the
+regional pattern documented for general-purpose ChatGPT search interest.
+Regionally, the highest-interest cluster is a non-metropolitan Southern
+group with markedly elevated Black population shares, though racial
+composition is not an independent predictor once attainment and income
+are accounted for.
 
-A gradient boosting model on seven 2019 features explains about 42% of
+A gradient boosting model on seven 2019 features explains about 39% of
 the cross-region variance in 2023-2025 student AI-for-schoolwork search
-interest under 5-fold cross-validation.
+interest under repeated cross-validation, estimated on the 198 DMAs with
+observed search interest. The paper reports the alternative treatment
+(coding the 11 unobserved DMAs at zero) alongside it throughout.
 
 ---
 
@@ -32,18 +37,18 @@ software release:
 @article{porder2026schoolworkai,
   title  = {Who Turns to {AI} for Schoolwork? {S}ocioeconomic and
             Educational Predictors of Student Interest in the {ChatGPT} Era},
-  author = {Porder, Dan},
+  author = {Porder, Daniel Clopton},
   year   = {2026},
   note   = {arXiv: PENDING}
 }
 
 @software{porder2026schoolworkai_code,
-  author    = {Porder, Dan},
+  author    = {Porder, Daniel Clopton},
   title     = {Who Turns to {AI} for Schoolwork? Code and data},
   year      = {2026},
   version   = {1.0.0},
   doi       = {10.5281/zenodo.20185969},
-  url       = {https://github.com/danporder/ai-schoolwork-search-interest}
+  url       = {https://github.com/dporder/ai-schoolwork-search-interest}
 }
 ```
 
@@ -65,7 +70,7 @@ This regenerates every figure and table in the paper from the shipped
 `data/processed/merged_dataset.csv`.
 
 ```bash
-git clone https://github.com/danporder/ai-schoolwork-search-interest.git
+git clone https://github.com/dporder/ai-schoolwork-search-interest.git
 cd ai-schoolwork-search-interest
 python3 -m pip install -r requirements.txt
 
@@ -77,6 +82,7 @@ python3 paper/build_lowess_figure.py     # Figure 1 (LOWESS panels)
 python3 paper/build_results_figures.py   # Figures 4 + 6 (cluster means, obs vs. predicted)
 python3 paper/build_cluster_map.py       # Figure 2 (DMA cluster map; needs geopandas)
 python3 paper/analysis_appendix.py       # Appendix B + C numbers
+python3 paper/robustness_appendix.py     # Appendix E (missing-outcome + influence checks)
 ```
 
 ### Fresh-pull path (full pipeline; requires API credentials)
@@ -129,7 +135,8 @@ make paper      # requires pdflatex + bibtex on PATH
 │   ├── build_lowess_figure.py         # Figure 1 (LOWESS panels)
 │   ├── build_results_figures.py       # Figures 4 + 6 (cluster means, obs vs. predicted)
 │   ├── build_cluster_map.py           # Figure 2 (DMA cluster map; needs geopandas)
-│   └── analysis_appendix.py           # Appendix B + C reproducer
+│   ├── analysis_appendix.py           # Appendix B + C reproducer
+│   └── robustness_appendix.py         # Appendix E reproducer
 ├── tests/
 │   └── test_smoke.py                  # runs in CI
 └── .github/
@@ -161,9 +168,9 @@ canonical pull date used for the paper is **2025-08-19**, recorded in
 `data/README.md`.
 
 If your fresh pull produces a different `merged_dataset.csv`, the
-qualitative claims in the paper (smaller, less affluent, higher
-Black-or-Hispanic-share regions show higher AI-for-schoolwork search
-interest) should still hold; the exact $R^2$ and cluster means may shift.
+qualitative claims in the paper (smaller, less affluent, lower-attainment
+regions show higher AI-for-schoolwork search interest) should still hold;
+the exact R-squared and cluster means may shift.
 
 ---
 
@@ -193,8 +200,8 @@ DOI citation. The paper-of-record is the v1.0.0 release. See
 
 ## Acknowledgments
 
-This work was originally produced as a coursework project; the open-source
-release was prepared for arXiv submission and reviewer scrutiny.
+This work originated as graduate research at the University of London; the
+open-source release was prepared for arXiv submission and reviewer scrutiny.
 
 ---
 

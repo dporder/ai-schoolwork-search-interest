@@ -44,14 +44,15 @@ PANELS = [
 
 def main():
     df = pd.read_csv(DATA_PATH, index_col=0)
+    df = df[df["search_interest"].notna()]  # observed-only primary spec
 
-    # Mean-impute predictors; zero-impute the outcome (per Section 3 of paper)
+    # Mean-impute predictors; restrict to observed outcomes (per Section 3 of paper)
     predictors = [p for p, _, _ in PANELS]
     needed = predictors + ["search_interest"]
     imp = SimpleImputer(strategy="mean")
     X = pd.DataFrame(imp.fit_transform(df[predictors]), columns=predictors,
                      index=df.index)
-    y = df["search_interest"].fillna(0)
+    y = df["search_interest"]
     plot_df = X.copy()
     plot_df["search_interest"] = y
 

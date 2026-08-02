@@ -29,7 +29,7 @@ data/
   clusters using the seven clustering features defined in paper §4.2.
 - **License:** CC BY 4.0 (see `LICENSE-DATA` at the repo root).
 - **Citation:** Porder, D. (2026). Who Turns to AI for Schoolwork? Derived
-  dataset. https://github.com/danporder/ai-schoolwork-search-interest
+  dataset. https://github.com/dporder/ai-schoolwork-search-interest
 
 ## Upstream sources
 

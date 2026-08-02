@@ -8,15 +8,16 @@
 #                     geopandas / cartopy)
 #   make appendix   - regenerate Appendix B and C numbers (cluster
 #                     geography + VIF)
+#   make robustness - regenerate Appendix E (missing-outcome + influence checks)
 #   make verify     - run the smoke test suite
 #   make paper      - compile paper/main.tex to paper/main.pdf (requires
 #                     pdflatex + bibtex on PATH)
 #   make clean      - remove LaTeX build artifacts
 
-.PHONY: install figures map appendix verify paper clean help
+.PHONY: install figures map appendix robustness verify paper clean help
 
 help:
-	@echo "Available targets: install figures map appendix verify paper clean"
+	@echo "Available targets: install figures map appendix robustness verify paper clean"
 
 install:
 	python3 -m pip install -r requirements.txt
@@ -30,6 +31,9 @@ map:
 
 appendix:
 	python3 paper/analysis_appendix.py
+
+robustness:
+	python3 paper/robustness_appendix.py
 
 verify:
 	python3 -m pytest tests/ -v
