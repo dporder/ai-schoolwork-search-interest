@@ -3,7 +3,7 @@
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 [![Data: CC BY 4.0](https://img.shields.io/badge/Data-CC%20BY%204.0-lightgrey.svg)](https://creativecommons.org/licenses/by/4.0/)
 [![Python 3.11+](https://img.shields.io/badge/python-3.11+-blue.svg)](https://www.python.org/downloads/)
-[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.CONCEPT_DOI.svg)](https://doi.org/10.5281/zenodo.CONCEPT_DOI)
+[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.20185969.svg)](https://doi.org/10.5281/zenodo.20185969)
 [![Release](https://img.shields.io/github/v/release/dporder/ai-schoolwork-search-interest)](https://github.com/dporder/ai-schoolwork-search-interest/releases/latest)
 
 Code, data, and paper for **"Who Turns to AI for Schoolwork? Socioeconomic and Educational Predictors of Student Interest in the ChatGPT Era"** by Dan Porder.
@@ -39,8 +39,8 @@ If you use the dataset or code, please cite both the paper and the software rele
   author    = {Porder, Dan},
   title     = {Who Turns to {AI} for Schoolwork? Code and data},
   year      = {2026},
-  version   = {1.0.0},
-  doi       = {10.5281/zenodo.CONCEPT_DOI},
+  version   = {1.1.0},
+  doi       = {10.5281/zenodo.20185969},
   url       = {https://github.com/dporder/ai-schoolwork-search-interest}
 }
 ```
@@ -170,11 +170,11 @@ Full per-dataset provenance, including pull dates and exact API tables, is docum
 
 ## Versioning
 
-Every tagged release is archived on Zenodo, which issues two kinds of DOI. Which one to cite depends on what you are citing. The **concept DOI** (the badge at the top of this file) always resolves to the most recent release; cite it when you mean the project. Each release additionally gets its own **version DOI**, which permanently resolves to that one frozen snapshot; cite it when you need the exact code and data behind a specific set of numbers. The paper's data-availability statement pins a version DOI for that reason.
+Every tagged release is archived on Zenodo, which issues two kinds of DOI. Which one to cite depends on what you are citing. The **concept DOI** (the badge at the top of this file) always resolves to the most recent release; cite it when you mean the project. Each release additionally gets its own **version DOI**, which permanently resolves to that one frozen snapshot; cite it when you need the exact code and data behind a specific set of numbers. The published version of the paper pins a version DOI in its data-availability statement for that reason.
 
 Numbers reported in the paper change between releases. [`CHANGELOG.md`](CHANGELOG.md) records what differs and why, so if you are reproducing a published figure, use the version DOI cited in that paper rather than the latest release.
 
-Releases are cut with `make release VERSION=x.y.z`, which stamps the version into `CITATION.cff`, `.zenodo.json`, and `CHANGELOG.md` before tagging, so the metadata Zenodo archives always matches the tag.
+Releases are cut with `make release VERSION=x.y.z`, which stamps the version into `CITATION.cff`, `.zenodo.json`, `CHANGELOG.md`, and this file's BibTeX entry before tagging, so the metadata Zenodo archives always matches the tag.
 
 ---
 
