@@ -12,7 +12,8 @@ Resolves Notes 37-38 in the revision pass:
 X axes carry human-readable labels with units. Asian share is plotted on a log
 scale per the original figure's treatment of heavy right-skew.
 
-Outputs version_2/figures/fig_lowess.pdf.
+Outputs paper/figures/fig_lowess.pdf (for the paper) and fig_lowess.png
+(for README.md).
 
 Run from repo root:
     python3 paper/build_lowess_figure.py
@@ -27,6 +28,11 @@ from sklearn.impute import SimpleImputer
 
 DATA_PATH = "data/processed/merged_dataset.csv"
 OUT_PATH = "paper/figures/fig_lowess.pdf"
+# The paper uses the vector PDF; the PNG is the copy embedded in README.md,
+# since GitHub cannot render a PDF inline. An explicit white facecolor keeps
+# the axis labels legible for readers on GitHub's dark theme.
+PNG_PATH = "paper/figures/fig_lowess.png"
+PNG_DPI = 200
 
 # Order: median income first (most headline-worthy), then bachelor-plus rate,
 # then graduate/professional rate. Population was previously included but its
@@ -85,8 +91,9 @@ def main():
 
     fig.tight_layout()
     fig.savefig(OUT_PATH, bbox_inches="tight")
+    fig.savefig(PNG_PATH, bbox_inches="tight", dpi=PNG_DPI, facecolor="white")
     plt.close(fig)
-    print(f"Wrote {OUT_PATH}")
+    print(f"Wrote {OUT_PATH} and {PNG_PATH}")
 
 
 if __name__ == "__main__":

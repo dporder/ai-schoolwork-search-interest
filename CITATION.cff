@@ -4,7 +4,7 @@ message: "If you use this software or dataset, please cite both the software (th
 type: software
 authors:
   - family-names: Porder
-    given-names: Daniel Clopton
+    given-names: Dan
     email: danporder@gmail.com
 date-released: 2026-05-10
 version: "1.0.0"
@@ -36,7 +36,7 @@ preferred-citation:
   title: "Who Turns to AI for Schoolwork? Socioeconomic and Educational Predictors of Student Interest in the ChatGPT Era"
   authors:
     - family-names: Porder
-      given-names: Daniel Clopton
+      given-names: Dan
       email: danporder@gmail.com
   year: 2026
   abstract: >

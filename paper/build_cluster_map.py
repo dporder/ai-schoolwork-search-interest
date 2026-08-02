@@ -22,7 +22,8 @@ Inputs:
     https://raw.githubusercontent.com/simzou/nielsen-dma/master/nielsen-mkt-map.json
 
 Output:
-    paper/figures/fig_cluster_map.pdf
+    paper/figures/fig_cluster_map.pdf   (for the paper)
+    paper/figures/fig_cluster_map.png   (for README.md)
 """
 from __future__ import annotations
 
@@ -45,6 +46,11 @@ GEOJSON_URL = (
     "nielsen-mkt-map.json"
 )
 OUT_PATH = "paper/figures/fig_cluster_map.pdf"
+# The paper uses the vector PDF; the PNG is the copy embedded in README.md,
+# since GitHub cannot render a PDF inline. An explicit white facecolor keeps
+# the legend text legible for readers on GitHub's dark theme.
+PNG_PATH = "paper/figures/fig_cluster_map.png"
+PNG_DPI = 200
 
 # Cluster colors and labels matching the paper's narrative
 CLUSTER_LABELS = {
@@ -141,8 +147,9 @@ def main():
 
     fig.tight_layout()
     fig.savefig(OUT_PATH, bbox_inches="tight", dpi=150)
+    fig.savefig(PNG_PATH, bbox_inches="tight", dpi=PNG_DPI, facecolor="white")
     plt.close(fig)
-    print(f"Saved {OUT_PATH}")
+    print(f"Saved {OUT_PATH} and {PNG_PATH}")
 
 
 if __name__ == "__main__":

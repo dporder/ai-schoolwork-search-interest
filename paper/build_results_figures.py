@@ -22,9 +22,9 @@ Run from the repo root:
 Inputs:
     data/processed/merged_dataset.csv
 
-Outputs:
-    paper/figures/fig_cluster_interest.pdf
-    paper/figures/fig_obs_pred.pdf
+Outputs (each written as a vector PDF for the paper and a PNG for the web):
+    paper/figures/fig_cluster_interest.{pdf,png}
+    paper/figures/fig_obs_pred.{pdf,png}
 
 Dependencies: pandas, numpy, scikit-learn, matplotlib.
 """
@@ -44,6 +44,11 @@ from sklearn.model_selection import GridSearchCV, KFold, cross_val_predict, cros
 warnings.filterwarnings("ignore")
 
 DATA_PATH = "data/processed/merged_dataset.csv"
+
+# Every figure is written twice: a vector PDF for the paper, and a raster PNG
+# for the web (GitHub cannot render a PDF inline). The explicit white facecolor
+# keeps axis text legible for readers on GitHub's dark theme.
+PNG_DPI = 200
 
 SUPERVISED = [
     "median_income", "bach_plus_rate", "population", "pct_hispanic",
@@ -118,8 +123,10 @@ def build_cluster_interest(df: pd.DataFrame) -> None:
 
     fig.tight_layout()
     fig.savefig("paper/figures/fig_cluster_interest.pdf", bbox_inches="tight")
+    fig.savefig("paper/figures/fig_cluster_interest.png", bbox_inches="tight",
+                dpi=PNG_DPI, facecolor="white")
     plt.close(fig)
-    print("Wrote paper/figures/fig_cluster_interest.pdf")
+    print("Wrote paper/figures/fig_cluster_interest.{pdf,png}")
     for cid, m, l, h, n in zip(cids, means, lo, hi, ns):
         print(f"  C{cid}: N={n}, mean={m:.2f}, 95% CI [{l:.2f}, {h:.2f}]")
 
@@ -173,8 +180,10 @@ def build_obs_pred(df: pd.DataFrame) -> None:
 
     fig.tight_layout()
     fig.savefig("paper/figures/fig_obs_pred.pdf", bbox_inches="tight")
+    fig.savefig("paper/figures/fig_obs_pred.png", bbox_inches="tight",
+                dpi=PNG_DPI, facecolor="white")
     plt.close(fig)
-    print("Wrote paper/figures/fig_obs_pred.pdf")
+    print("Wrote paper/figures/fig_obs_pred.{pdf,png}")
 
 
 def main() -> None:

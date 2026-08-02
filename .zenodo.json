@@ -1,0 +1,33 @@
+{
+  "upload_type": "software",
+  "title": "Who Turns to AI for Schoolwork? Code, data, and paper",
+  "description": "Code and derived dataset for \"Who Turns to AI for Schoolwork? Socioeconomic and Educational Predictors of Student Interest in the ChatGPT Era.\" The repository links 2019 pre-ChatGPT regional conditions (American Community Survey, Stanford Education Data Archive) to 2023-2025 student-intent AI search interest at the U.S. Designated Market Area (DMA) level.",
+  "creators": [
+    {
+      "name": "Porder, Dan",
+      "affiliation": "University of London"
+    }
+  ],
+  "license": "MIT",
+  "access_right": "open",
+  "version": "1.0.0",
+  "language": "eng",
+  "keywords": [
+    "generative AI",
+    "education",
+    "digital divide",
+    "Google Trends",
+    "academic integrity",
+    "ChatGPT",
+    "DMA",
+    "American Community Survey",
+    "Stanford Education Data Archive"
+  ],
+  "related_identifiers": [
+    {
+      "identifier": "https://github.com/dporder/ai-schoolwork-search-interest",
+      "relation": "isSupplementTo",
+      "scheme": "url"
+    }
+  ]
+}

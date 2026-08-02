@@ -40,6 +40,18 @@ record should read this section first.
   described at the level of the regional cluster typology rather than as an
   independent predictor, which is what the data support.
 - Corrected the published repository URL throughout (`danporder` to `dporder`).
+- **Author name normalised to "Dan Porder" everywhere.** `paper/main.tex`,
+  `CITATION.cff`, and the README BibTeX entries variously carried "Daniel
+  Clopton Porder"; all now read "Dan Porder", matching `LICENSE`,
+  `pyproject.toml`, and the v1.0.0 Zenodo record.
+- Figure build scripts now write each figure twice: the vector PDF used by
+  `paper/main.tex` and a 200-DPI PNG on a white background for README.md,
+  since GitHub cannot render PDFs inline.
+- README versioning section no longer names a release. It explains Zenodo's
+  concept DOI (always resolves to latest) versus version DOI (a frozen
+  snapshot) and which to cite for what. The previous text claimed the
+  paper-of-record was v1.0.0, which stopped being true once this release
+  changed the reported numbers.
 - Bibliography corrections: `daepp2025` now cites the peer-reviewed ICWSM 2025
   version; `darlinghammond2024` now cites the AERA Open article rather than its
   data deposit, with the co-author's name corrected; plus fixes to
@@ -53,6 +65,16 @@ record should read this section first.
 - Appendix E to the paper, reporting both missing-outcome treatments plus a
   small-DMA check and a winsorization check.
 - `vonhippel2007` to the bibliography, supporting the complete-case rationale.
+- `.zenodo.json`, which Zenodo reads in preference to `CITATION.cff` when
+  archiving a release, pinning the author name and project metadata on the
+  deposited record.
+- `scripts/release.sh` and `make release VERSION=x.y.z`, which stamps the
+  version into `CITATION.cff`, `.zenodo.json`, `CHANGELOG.md`, and the README
+  BibTeX entry, then commits and tags. It does not push: Zenodo mints the DOI
+  when the GitHub Release is published and DOIs cannot be withdrawn, so
+  metadata has to be correct before that point.
+- PNG copies of Figures 1, 2, 4, and 6 under `paper/figures/`, for README
+  display.
 
 ## [1.0.0] — 2026-05-10
 
