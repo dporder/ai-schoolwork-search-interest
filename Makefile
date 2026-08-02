@@ -12,12 +12,14 @@
 #   make verify     - run the smoke test suite
 #   make paper      - compile paper/main.tex to paper/main.pdf (requires
 #                     pdflatex + bibtex on PATH)
+#   make icwsm      - compile the ICWSM two-column variant (requires the
+#                     AAAI Author Kit; see paper/icwsm/README.md)
 #   make clean      - remove LaTeX build artifacts
 
-.PHONY: install figures map appendix robustness verify paper clean help
+.PHONY: install figures map appendix robustness verify paper icwsm clean help
 
 help:
-	@echo "Available targets: install figures map appendix robustness verify paper clean"
+	@echo "Available targets: install figures map appendix robustness verify paper icwsm clean"
 
 install:
 	python3 -m pip install -r requirements.txt
@@ -40,6 +42,9 @@ verify:
 
 paper:
 	cd paper && pdflatex main.tex && bibtex main && pdflatex main.tex && pdflatex main.tex
+
+icwsm:
+	cd paper/icwsm && pdflatex main.tex && bibtex main && pdflatex main.tex && pdflatex main.tex
 
 clean:
 	cd paper && rm -f main.aux main.bbl main.blg main.log main.out main.synctex.gz main.fdb_latexmk main.fls missfont.log *.tmp
