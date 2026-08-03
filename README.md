@@ -10,6 +10,8 @@ Code, data, and paper for **"Who Turns to AI for Schoolwork? Socioeconomic and E
 
 This research links 2019 pre-ChatGPT regional conditions (American Community Survey, Stanford Education Data Archive) to 2023-2025 student-intent AI search interest at the U.S. Designated Market Area (DMA) level. Counterintuitively, the results show that smaller, less affluent DMAs with lower degree attainment had the highest interest in AI for schoolwork following ChatGPT's release, an inversion of the regional pattern documented for general-purpose AI chatbot search interest. Regionally, the highest-interest cluster is a non-metropolitan Southern group with markedly elevated Black population shares.
 
+A gradient boosting model on seven 2019 features explains about 39% of the cross-region variance in 2023-2025 student AI-for-schoolwork search interest under repeated cross-validation, estimated on the 198 DMAs with observed search interest.
+
 [![Student AI-for-schoolwork search interest plotted against median household income, bachelor's-or-higher attainment, and graduate-or-professional attainment. All three LOWESS curves slope downward, so interest is highest in the lowest-income, lowest-attainment DMAs.](paper/figures/fig_lowess.png)](paper/figures/fig_lowess.pdf)
 
 *Figure 1 — AI-for-schoolwork search interest declines as regional income and degree attainment rise. Click through for the vector PDF.*
@@ -17,8 +19,6 @@ This research links 2019 pre-ChatGPT regional conditions (American Community Sur
 [![Map of the continental U.S. shaded by DMA socioeconomic cluster, showing five clusters: rural and small-metro predominantly white, Hispanic-majority Southwestern metros, large national metros, San Francisco plus Honolulu, and a contiguous rural Southern block with elevated Black population share.](paper/figures/fig_cluster_map.png)](paper/figures/fig_cluster_map.pdf)
 
 *Figure 2 — The five DMA socioeconomic clusters. Cluster 4 (blue), the rural Southern group, shows the highest mean search interest.*
-
-A gradient boosting model on seven 2019 features explains about 39% of the cross-region variance in 2023-2025 student AI-for-schoolwork search interest under repeated cross-validation, estimated on the 198 DMAs with observed search interest.
 
 ---
 
@@ -170,11 +170,11 @@ Full per-dataset provenance, including pull dates and exact API tables, is docum
 
 ## Versioning
 
-Every tagged release is archived on Zenodo, which issues two kinds of DOI. Which one to cite depends on what you are citing. The **concept DOI** (the badge at the top of this file) always resolves to the most recent release; cite it when you mean the project. Each release additionally gets its own **version DOI**, which permanently resolves to that one frozen snapshot; cite it when you need the exact code and data behind a specific set of numbers. The published version of the paper pins a version DOI in its data-availability statement for that reason.
+Every tagged release is archived on Zenodo, which issues two kinds of DOI. Which one to cite depends on what you are citing. The **concept DOI** (the badge at the top of this file) always resolves to the most recent release; cite it when you mean the project. Each release additionally gets its own **version DOI**, which permanently resolves to that one frozen snapshot. Cite it when you need the exact code and data behind a specific set of numbers. The published version of the paper pins a version DOI in its data-availability statement for that reason.
 
-Numbers reported in the paper change between releases. [`CHANGELOG.md`](CHANGELOG.md) records what differs and why, so if you are reproducing a published figure, use the version DOI cited in that paper rather than the latest release.
+Numbers reported in the paper can change between releases. [`CHANGELOG.md`](CHANGELOG.md) records what differs and why, so if you are reproducing a published figure, use the version DOI cited in that paper rather than the latest release.
 
-Releases are cut with `make release VERSION=x.y.z`, which stamps the version into `CITATION.cff`, `.zenodo.json`, `CHANGELOG.md`, and this file's BibTeX entry before tagging, so the metadata Zenodo archives always matches the tag.
+Releases are cut with `make release VERSION=x.y.z`, which stamps the version into `CITATION.cff`, `.zenodo.json`, `CHANGELOG.md`, and this file's BibTeX entry before tagging, so the metadata Zenodo archives should always match the tag.
 
 ---
 
