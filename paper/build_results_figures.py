@@ -30,6 +30,8 @@ Dependencies: pandas, numpy, scikit-learn, matplotlib.
 """
 from __future__ import annotations
 
+from pathlib import Path
+
 import warnings
 
 import matplotlib
@@ -43,7 +45,11 @@ from sklearn.model_selection import GridSearchCV, KFold, cross_val_predict, cros
 
 warnings.filterwarnings("ignore")
 
-DATA_PATH = "data/processed/merged_dataset.csv"
+# Paths are anchored to this file's own location, so the script behaves the
+# same whether it is run from the repo root, from paper/, or anywhere else.
+REPO_ROOT = Path(__file__).resolve().parent.parent
+
+DATA_PATH = REPO_ROOT / "data/processed/merged_dataset.csv"
 
 # Every figure is written twice: a vector PDF for the paper, and a raster PNG
 # for the web (GitHub cannot render a PDF inline). The explicit white facecolor
@@ -122,11 +128,11 @@ def build_cluster_interest(df: pd.DataFrame) -> None:
     ax.set_axisbelow(True)
 
     fig.tight_layout()
-    fig.savefig("paper/figures/fig_cluster_interest.pdf", bbox_inches="tight")
-    fig.savefig("paper/figures/fig_cluster_interest.png", bbox_inches="tight",
+    fig.savefig(REPO_ROOT / "paper/figures/fig_cluster_interest.pdf", bbox_inches="tight")
+    fig.savefig(REPO_ROOT / "paper/figures/fig_cluster_interest.png", bbox_inches="tight",
                 dpi=PNG_DPI, facecolor="white")
     plt.close(fig)
-    print("Wrote paper/figures/fig_cluster_interest.{pdf,png}")
+    print(f"Wrote {REPO_ROOT / 'paper/figures'}/fig_cluster_interest.{{pdf,png}}")
     for cid, m, l, h, n in zip(cids, means, lo, hi, ns):
         print(f"  C{cid}: N={n}, mean={m:.2f}, 95% CI [{l:.2f}, {h:.2f}]")
 
@@ -161,7 +167,15 @@ def build_obs_pred(df: pd.DataFrame) -> None:
     r2_scores = cross_val_score(best, X, y, cv=outer, scoring="r2", n_jobs=-1)
     r2_mean, r2_sd = r2_scores.mean(), r2_scores.std()
     y_pred = cross_val_predict(best, X, y, cv=outer, n_jobs=-1)
-    print(f"R^2 = {r2_mean:.3f} +/- {r2_sd:.3f}")
+    # This single-split R^2 is a fit-shape diagnostic for Figure 6, NOT the
+    # paper's headline. A single fold assignment is unstable at n=198, which is
+    # exactly why the headline uses repeated CV. Print the surrounding context
+    # so this number is never read in isolation as the model's performance.
+    print(f"R^2 = {r2_mean:.3f} +/- {r2_sd:.3f}   <- single 5-fold pass, diagnostic only")
+    print("     A single split is unstable at n=198: per-repetition means range "
+          "0.29 to 0.47.")
+    print("     Headline (Table 2 / Appendix E): repeated-CV R^2 = 0.39 (SD 0.11), "
+          "10 x 5-fold.")
 
     fig, ax = plt.subplots(figsize=(5.5, 5.5))
     ax.scatter(y, y_pred, alpha=0.55, s=22, color="#3a6ea5",
@@ -179,11 +193,11 @@ def build_obs_pred(df: pd.DataFrame) -> None:
     ax.set_axisbelow(True)
 
     fig.tight_layout()
-    fig.savefig("paper/figures/fig_obs_pred.pdf", bbox_inches="tight")
-    fig.savefig("paper/figures/fig_obs_pred.png", bbox_inches="tight",
+    fig.savefig(REPO_ROOT / "paper/figures/fig_obs_pred.pdf", bbox_inches="tight")
+    fig.savefig(REPO_ROOT / "paper/figures/fig_obs_pred.png", bbox_inches="tight",
                 dpi=PNG_DPI, facecolor="white")
     plt.close(fig)
-    print("Wrote paper/figures/fig_obs_pred.{pdf,png}")
+    print(f"Wrote {REPO_ROOT / 'paper/figures'}/fig_obs_pred.{{pdf,png}}")
 
 
 def main() -> None:

@@ -24,8 +24,11 @@ jobs:
           # Install just what the smoke test + appendix script need.
           # Avoids the heavy dependencies (cartopy, geopandas) needed by
           # the full pipeline but not by CI verification.
-          pip install pandas==2.3.1 numpy==2.3.2 pytest statsmodels==0.14.5 \
-                      matplotlib==3.10.5 seaborn==0.13.2 scikit-learn==1.7.1
+          # Every version here must match requirements.txt exactly, so CI
+          # verifies the same environment the paper's numbers were produced in.
+          pip install pandas==2.3.1 numpy==2.3.2 scipy==1.16.1 \
+                      statsmodels==0.14.5 matplotlib==3.10.5 \
+                      seaborn==0.13.2 scikit-learn==1.7.1 pytest==9.1.1
 
       - name: Run smoke tests
         run: python -m pytest tests/ -v

@@ -20,13 +20,19 @@ Inputs:
 Dependencies: pandas, numpy, scikit-learn.
 """
 
+from pathlib import Path
+
 import numpy as np
 import pandas as pd
 from sklearn.ensemble import GradientBoostingRegressor
 from sklearn.model_selection import (GridSearchCV, KFold, RepeatedKFold,
                                      cross_val_score)
 
-DATA_PATH = "data/processed/merged_dataset.csv"
+# Paths are anchored to this file's own location, so the script behaves the
+# same whether it is run from the repo root, from paper/, or anywhere else.
+REPO_ROOT = Path(__file__).resolve().parent.parent
+
+DATA_PATH = REPO_ROOT / "data/processed/merged_dataset.csv"
 TARGET = "search_interest"
 SUPERVISED = ["median_income", "bach_plus_rate", "population", "pct_hispanic",
               "pct_nh_black", "pct_nh_asian", "score_all_ela"]

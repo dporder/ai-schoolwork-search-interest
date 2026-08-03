@@ -40,16 +40,20 @@ from thefuzz import process
 
 warnings.filterwarnings("ignore")
 
-DATA_PATH = "data/processed/merged_dataset.csv"
+# Paths are anchored to this file's own location, so the script behaves the
+# same whether it is run from the repo root, from paper/, or anywhere else.
+REPO_ROOT = Path(__file__).resolve().parent.parent
+
+DATA_PATH = REPO_ROOT / "data/processed/merged_dataset.csv"
 GEOJSON_URL = (
     "https://raw.githubusercontent.com/simzou/nielsen-dma/master/"
     "nielsen-mkt-map.json"
 )
-OUT_PATH = "paper/figures/fig_cluster_map.pdf"
+OUT_PATH = REPO_ROOT / "paper/figures/fig_cluster_map.pdf"
 # The paper uses the vector PDF; the PNG is the copy embedded in README.md,
 # since GitHub cannot render a PDF inline. An explicit white facecolor keeps
 # the legend text legible for readers on GitHub's dark theme.
-PNG_PATH = "paper/figures/fig_cluster_map.png"
+PNG_PATH = REPO_ROOT / "paper/figures/fig_cluster_map.png"
 PNG_DPI = 200
 
 # Cluster colors and labels matching the paper's narrative

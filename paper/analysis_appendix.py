@@ -17,6 +17,8 @@ Inputs:  merged_dataset.csv
 Outputs: prints the numbers; no files written.
 Dependencies: pandas, numpy, statsmodels.
 """
+from pathlib import Path
+
 import warnings
 
 import numpy as np
@@ -25,7 +27,11 @@ from statsmodels.stats.outliers_influence import variance_inflation_factor
 
 warnings.filterwarnings("ignore")
 
-DATA_PATH = "data/processed/merged_dataset.csv"
+# Paths are anchored to this file's own location, so the script behaves the
+# same whether it is run from the repo root, from paper/, or anywhere else.
+REPO_ROOT = Path(__file__).resolve().parent.parent
+
+DATA_PATH = REPO_ROOT / "data/processed/merged_dataset.csv"
 
 SUPERVISED = [
     "median_income", "bach_plus_rate", "population", "pct_hispanic",
