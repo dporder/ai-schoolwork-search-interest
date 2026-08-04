@@ -6,6 +6,7 @@ authors:
   - family-names: Porder
     given-names: Dan
     email: danporder@gmail.com
+    orcid: "https://orcid.org/0009-0006-4680-011X"
 date-released: 2026-08-02
 version: "1.1.0"
 license: MIT
@@ -41,6 +42,7 @@ preferred-citation:
     - family-names: Porder
       given-names: Dan
       email: danporder@gmail.com
+      orcid: "https://orcid.org/0009-0006-4680-011X"
   year: 2026
   abstract: >
     Since ChatGPT's release in late 2022, adoption of generative AI by
